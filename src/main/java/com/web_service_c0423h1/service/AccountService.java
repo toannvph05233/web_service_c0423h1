@@ -19,4 +19,10 @@ public class AccountService {
     public Account save(Account account){
         return iAccountRepo.save(account);
     }
+    public void delete(int id){
+         iAccountRepo.deleteById(id);
+    }
+    public Account findById(int id){
+        return iAccountRepo.findById(id).get();
+    }
 }

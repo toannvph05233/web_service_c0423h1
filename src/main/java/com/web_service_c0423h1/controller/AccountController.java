@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/accounts")
 public class AccountController {
     @Autowired
@@ -24,8 +25,18 @@ public class AccountController {
         return accountService.getAll();
     }
 
+    @GetMapping("/{id}")
+    public Account getAccount(@PathVariable int id){
+        return accountService.findById(id);
+    }
+    @GetMapping("/delete/{id}")
+    public ResponseEntity<?> delete(@PathVariable int id){
+        accountService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<Account> save(@RequestBody Account account){
-        return new ResponseEntity<>(accountService.save(account), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(accountService.save(account), HttpStatus.OK);
     }
 }
