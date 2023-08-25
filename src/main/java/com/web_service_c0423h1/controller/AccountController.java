@@ -29,6 +29,12 @@ public class AccountController {
     public Account getAccount(@PathVariable int id){
         return accountService.findById(id);
     }
+
+    @GetMapping("/search")
+    public List<Account> findByUsernameContain(String username){
+        return accountService.findAllByUsernameContaining(username);
+    }
+
     @GetMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable int id){
         accountService.delete(id);

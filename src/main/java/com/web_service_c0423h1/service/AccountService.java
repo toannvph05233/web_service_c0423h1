@@ -15,6 +15,9 @@ public class AccountService {
     public List<Account> getAll(){
         return (List<Account>) iAccountRepo.findAll();
     }
+    public List<Account> findAllByUsernameContaining(String username){
+        return iAccountRepo.findAllByUsernameContaining(username);
+    }
 
     public Account save(Account account){
         return iAccountRepo.save(account);
