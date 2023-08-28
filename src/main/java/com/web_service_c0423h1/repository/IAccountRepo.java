@@ -12,4 +12,6 @@ public interface IAccountRepo extends CrudRepository<Account, Integer> {
     @Query(value = "select a from Account a where a.username like concat('%',:name,'%')")
     List<Account> findAllByUsernameHQL(String username);
 
+    Account findByUsername(String username);
+
 }
